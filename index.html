@@ -13,36 +13,53 @@
     <div class="container">
         <div class="boxes">
             <div class="box1 box" onclick="diceClick('box1')">
-                <p id="box1Text" value="5"></p>
+                <p id="box1Text"></p>
             </div>
             <div class="box2 box" onclick="diceClick('box2')">
-                <p id="box2Text" value="7"></p>
+                <p id="box2Text"></p>
             </div>
         </div>
         <div class="result">
             <h2 id="resultText"></h2>
+            <button id="" onclick="reset()">RESET</button>
         </div>
     </div>
     <script>
         let player1Clicked = false;
         let player2Clicked = false;
 
-
         function diceClick(selectedBox) {
-            if (selectedBox === 'box1') {
+            if (selectedBox === 'box1' && !player1Clicked) {
                 document.getElementById("box1Text").innerHTML = Math.floor(Math.random() * 6) + 1;
                 player1Clicked = true;
-            } else if (selectedBox === 'box2') {
+            } else if (selectedBox === 'box2' && !player2Clicked) {
                 document.getElementById("box2Text").innerHTML = Math.floor(Math.random() * 6) + 1;
                 player2Clicked = true;
             }
             if (player1Clicked && player2Clicked) {
-                let box1Value = document.getElementById("box1Text").value;
-                let box2Value = document.getElementById("box2Text").value;
-                // let winner = document.getElementById("resultText");
-                let won = (box1Value < box2Value) ? "2 Winner" : "1 Winner";
-                document.getElementById("reultText").innerHTML = won;
+                let box1Value = document.getElementById("box1Text").textContent;
+                let box2Value = document.getElementById("box2Text").textContent;
+                if (box1Value < box2Value) {
+                    document.getElementById("resultText").innerHTML = "Player 2 Won"
+                } else if (box1Value > box2Value) {
+                    document.getElementById("resultText").innerHTML = "Player 1 Won"
+                } else if (box1Value == box2Value) {
+                    document.getElementById("resultText").innerHTML = "Draw"
+                }
+                document.getElementById("resultText").style.transform = "scale(2)"
+                setTimeout(() => {
+                    document.getElementById("resultText").style.transform = "scale(1)"
+                }, 1000);
             }
+
+        }
+
+        function reset() {
+            player1Clicked = false;
+            player2Clicked = false;
+            document.getElementById("box1Text").innerHTML = "";
+            document.getElementById("box2Text").innerHTML = "";
+            document.getElementById("resultText").innerHTML = "";
         }
     </script>
 
