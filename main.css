@@ -2,3 +2,46 @@ body {
     margin: 0;
     background: rgb(230, 163, 163);
 }
+
+p {
+    font-size: 100px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5c1c1;
+}
+
+.boxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(147, 68, 68);
+    width: 600px;
+    height: 400px;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 300px;
+    margin: 15px;
+}
+
+.box:hover {
+    cursor: pointer;
+}
+
+.box1 {
+    background: rgb(220, 216, 93);
+}
+
+.box2 {
+    background: rgb(106, 219, 153);
+}

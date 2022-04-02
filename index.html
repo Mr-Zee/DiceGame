@@ -11,8 +11,40 @@
 
 <body>
     <div class="container">
-        HEllo
+        <div class="boxes">
+            <div class="box1 box" onclick="diceClick('box1')">
+                <p id="box1Text" value="5"></p>
+            </div>
+            <div class="box2 box" onclick="diceClick('box2')">
+                <p id="box2Text" value="7"></p>
+            </div>
+        </div>
+        <div class="result">
+            <h2 id="resultText"></h2>
+        </div>
     </div>
+    <script>
+        let player1Clicked = false;
+        let player2Clicked = false;
+
+
+        function diceClick(selectedBox) {
+            if (selectedBox === 'box1') {
+                document.getElementById("box1Text").innerHTML = Math.floor(Math.random() * 6) + 1;
+                player1Clicked = true;
+            } else if (selectedBox === 'box2') {
+                document.getElementById("box2Text").innerHTML = Math.floor(Math.random() * 6) + 1;
+                player2Clicked = true;
+            }
+            if (player1Clicked && player2Clicked) {
+                let box1Value = document.getElementById("box1Text").value;
+                let box2Value = document.getElementById("box2Text").value;
+                // let winner = document.getElementById("resultText");
+                let won = (box1Value < box2Value) ? "2 Winner" : "1 Winner";
+                document.getElementById("reultText").innerHTML = won;
+            }
+        }
+    </script>
 
 </body>
 
